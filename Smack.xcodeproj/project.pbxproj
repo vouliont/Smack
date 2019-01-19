@@ -8,18 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		2C05D71921EF2CE7003AADB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D71821EF2CE7003AADB5 /* AppDelegate.swift */; };
-		2C05D71B21EF2CE7003AADB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D71A21EF2CE7003AADB5 /* ViewController.swift */; };
 		2C05D71E21EF2CE7003AADB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C05D71C21EF2CE7003AADB5 /* Main.storyboard */; };
 		2C05D72021EF2CE7003AADB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C05D71F21EF2CE7003AADB5 /* Assets.xcassets */; };
 		2C05D72321EF2CE7003AADB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C05D72121EF2CE7003AADB5 /* LaunchScreen.storyboard */; };
 		2C05D72E21EF38A2003AADB5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D72C21EF38A2003AADB5 /* SWRevealViewController.m */; };
+		2C05D73321EF3EFC003AADB5 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D73221EF3EFC003AADB5 /* ChatVC.swift */; };
+		2C05D73521EF3F24003AADB5 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D73421EF3F24003AADB5 /* ChannelVC.swift */; };
+		2C05D73721EF497B003AADB5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D73621EF497B003AADB5 /* GradientView.swift */; };
+		2C05D73A21EF5C0E003AADB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D73921EF5C0E003AADB5 /* Constants.swift */; };
+		2C05D73C21EF6705003AADB5 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D73B21EF6705003AADB5 /* LoginVC.swift */; };
+		2C05D73E21EF6984003AADB5 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D73D21EF6984003AADB5 /* SignUpVC.swift */; };
+		2C05D74021EF6D48003AADB5 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D73F21EF6D48003AADB5 /* BorderedButton.swift */; };
+		2C05D74521F0CE08003AADB5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05D74421F0CE08003AADB5 /* AuthService.swift */; };
+		2CF60C2321F1F57F0014EAED /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF60C2221F1F57F0014EAED /* UserDataService.swift */; };
+		2CF60C2521F209DF0014EAED /* AvatarPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF60C2421F209DF0014EAED /* AvatarPickerVC.swift */; };
+		2CF60C2721F20E8C0014EAED /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF60C2621F20E8C0014EAED /* AvatarCell.swift */; };
 		D824D4D3840042560CC4BE0A /* Pods_Smack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C324F5450E1660A2BF827E8 /* Pods_Smack.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C05D71521EF2CE7003AADB5 /* Smack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C05D71821EF2CE7003AADB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C05D71A21EF2CE7003AADB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2C05D71D21EF2CE7003AADB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C05D71F21EF2CE7003AADB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C05D72221EF2CE7003AADB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -27,6 +36,17 @@
 		2C05D72B21EF38A1003AADB5 /* Smack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smack-Bridging-Header.h"; sourceTree = "<group>"; };
 		2C05D72C21EF38A2003AADB5 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		2C05D72D21EF38A2003AADB5 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		2C05D73221EF3EFC003AADB5 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		2C05D73421EF3F24003AADB5 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
+		2C05D73621EF497B003AADB5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		2C05D73921EF5C0E003AADB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2C05D73B21EF6705003AADB5 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		2C05D73D21EF6984003AADB5 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		2C05D73F21EF6D48003AADB5 /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		2C05D74421F0CE08003AADB5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		2CF60C2221F1F57F0014EAED /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		2CF60C2421F209DF0014EAED /* AvatarPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerVC.swift; sourceTree = "<group>"; };
+		2CF60C2621F20E8C0014EAED /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		4C324F5450E1660A2BF827E8 /* Pods_Smack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C75EA79C8B9A8286FD13C1 /* Pods-Smack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.release.xcconfig"; sourceTree = "<group>"; };
 		BCBDF625CF7F7D49E3ED0285 /* Pods-Smack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,9 +85,13 @@
 		2C05D71721EF2CE7003AADB5 /* Smack */ = {
 			isa = PBXGroup;
 			children = (
+				2C05D74321F0CDDF003AADB5 /* Services */,
+				2C05D73821EF5BFD003AADB5 /* Utilities */,
+				2C05D73121EF3EDF003AADB5 /* Model */,
+				2C05D73021EF3EDB003AADB5 /* View */,
+				2C05D72F21EF3ED2003AADB5 /* Controller */,
 				2C05D72A21EF3843003AADB5 /* Supporting Files */,
 				2C05D71821EF2CE7003AADB5 /* AppDelegate.swift */,
-				2C05D71A21EF2CE7003AADB5 /* ViewController.swift */,
 				2C05D71C21EF2CE7003AADB5 /* Main.storyboard */,
 				2C05D71F21EF2CE7003AADB5 /* Assets.xcassets */,
 				2C05D72121EF2CE7003AADB5 /* LaunchScreen.storyboard */,
@@ -84,6 +108,52 @@
 				2C05D72B21EF38A1003AADB5 /* Smack-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C05D72F21EF3ED2003AADB5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2C05D73221EF3EFC003AADB5 /* ChatVC.swift */,
+				2C05D73421EF3F24003AADB5 /* ChannelVC.swift */,
+				2C05D73B21EF6705003AADB5 /* LoginVC.swift */,
+				2C05D73D21EF6984003AADB5 /* SignUpVC.swift */,
+				2CF60C2421F209DF0014EAED /* AvatarPickerVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2C05D73021EF3EDB003AADB5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C05D73621EF497B003AADB5 /* GradientView.swift */,
+				2C05D73F21EF6D48003AADB5 /* BorderedButton.swift */,
+				2CF60C2621F20E8C0014EAED /* AvatarCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C05D73121EF3EDF003AADB5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C05D73821EF5BFD003AADB5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2C05D73921EF5C0E003AADB5 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2C05D74321F0CDDF003AADB5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2C05D74421F0CE08003AADB5 /* AuthService.swift */,
+				2CF60C2221F1F57F0014EAED /* UserDataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		4A995D405A707D58BD8F9508 /* Pods */ = {
@@ -230,9 +300,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C05D71B21EF2CE7003AADB5 /* ViewController.swift in Sources */,
+				2C05D73E21EF6984003AADB5 /* SignUpVC.swift in Sources */,
+				2CF60C2521F209DF0014EAED /* AvatarPickerVC.swift in Sources */,
+				2C05D73521EF3F24003AADB5 /* ChannelVC.swift in Sources */,
+				2C05D73321EF3EFC003AADB5 /* ChatVC.swift in Sources */,
+				2CF60C2321F1F57F0014EAED /* UserDataService.swift in Sources */,
+				2C05D73C21EF6705003AADB5 /* LoginVC.swift in Sources */,
+				2C05D74521F0CE08003AADB5 /* AuthService.swift in Sources */,
+				2C05D73721EF497B003AADB5 /* GradientView.swift in Sources */,
 				2C05D71921EF2CE7003AADB5 /* AppDelegate.swift in Sources */,
+				2CF60C2721F20E8C0014EAED /* AvatarCell.swift in Sources */,
+				2C05D74021EF6D48003AADB5 /* BorderedButton.swift in Sources */,
 				2C05D72E21EF38A2003AADB5 /* SWRevealViewController.m in Sources */,
+				2C05D73A21EF5C0E003AADB5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +462,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Smack/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,6 +484,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Smack/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
