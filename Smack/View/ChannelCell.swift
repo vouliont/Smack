@@ -30,6 +30,12 @@ class ChannelCell: UITableViewCell {
     func configureCell(channel: Channel) {
         let title = channel.name ?? ""
         channelName.text = "#\(title)"
+        
+        if MessageService.instance.uncheckedChannels.contains(channel._id) {
+            channelName.font = UIFont(name: "HelveticaNeue-Bold", size: 17)
+        } else {
+            channelName.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        }
     }
 
 }

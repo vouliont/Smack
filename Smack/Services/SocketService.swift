@@ -55,12 +55,10 @@ class SocketService: NSObject {
         completion(true)
     }
     
-    func messageDidAdd(completion: @escaping CompletionHandler) {
+    func messageDidAdd(completion: @escaping (_ newMessage: Message) -> Void) {
         socket.on("messageCreated") { (dataArray, ack) in
             guard let channelId = dataArray[2] as? String else { return }
-            if channelId != MessageService.instance.selectedChannel?._id || !AuthService.instance.isLoggedIn {
-                return
-            }
+            guard AuthService.instance.isLoggedIn else { return }
             
             guard let messageBody = dataArray[0] as? String else { return }
             guard let userName = dataArray[3] as? String else { return }
@@ -71,9 +69,15 @@ class SocketService: NSObject {
             
             let message = Message(message: messageBody, userName: userName, channelId: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
             
-            MessageService.instance.messages.append(message)
+            completion(message)
+        }
+    }
+    
+    func getTypingUsers(_ completionHandler: @escaping (_ typingUsers: [String: String]) -> Void) {
+        socket.on("userTypingUpdate") { (dataArray, ack) in
+            guard let typingUsers = dataArray[0] as? [String: String] else { return }
             
-            completion(true)
+            completionHandler(typingUsers)
         }
     }
     

@@ -34,6 +34,21 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
+        SocketService.instance.messageDidAdd { (newMessage) in
+            guard AuthService.instance.isLoggedIn else { return }
+            
+            if newMessage.channelId != MessageService.instance.selectedChannel?._id {
+                MessageService.instance.uncheckedChannels.append(newMessage.channelId)
+                let index = self.tableView.indexPathForSelectedRow
+                
+                self.tableView.reloadData()
+                
+                if let index = index {
+                    self.tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+                }
+            }
+        }
+        
         SocketService.instance.getChannel { (success) in
             if success {
                 self.tableView.reloadData()
@@ -112,6 +127,14 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let channel = MessageService.instance.channels[indexPath.row]
         MessageService.instance.selectedChannel = channel
         NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
+        
+        if MessageService.instance.uncheckedChannels.contains(channel._id) {
+            MessageService.instance.uncheckedChannels = MessageService.instance.uncheckedChannels.filter { (uncheckedChannel) -> Bool in
+                return uncheckedChannel != channel._id
+            }
+            tableView.reloadRows(at: [indexPath], with: .none)
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
         
         self.revealViewController().revealToggle(animated: true)
     }
