@@ -8,16 +8,30 @@
 
 import UIKit
 
-class ChatVC: UIViewController {
+class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Outlets
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
     @IBOutlet weak var messageTxtBox: UITextField!
+    @IBOutlet weak var messagesView: UITableView!
+    @IBOutlet weak var sendMsgBtn: UIButton!
+    
+    // Variables
+    var isTyping = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
+        messageTxtBox.rightView = paddingView
+        messageTxtBox.rightViewMode = .always
+        
+        sendMsgBtn.isHidden = true
         selectAppTitle()
+        
+        messagesView.delegate = self
+        messagesView.dataSource = self
         
         view.bindToKeyboard()
         let tap = UITapGestureRecognizer(target: self, action: #selector(ChatVC.handleTap))
@@ -29,6 +43,17 @@ class ChatVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
+        
+        SocketService.instance.messageDidAdd { (success) in
+            if success {
+                self.messagesView.reloadData()
+                
+                if MessageService.instance.messages.count > 0 {
+                    let indexLastMessage = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
+                    self.messagesView.scrollToRow(at: indexLastMessage, at: .bottom, animated: false)
+                }
+            }
+        }
         
         if AuthService.instance.isLoggedIn {
             AuthService.instance.findUserByEmail { (success) in
@@ -46,6 +71,7 @@ class ChatVC: UIViewController {
     func selectAppTitle() {
         if !AuthService.instance.isLoggedIn {
             channelNameLbl.text = "Please Log In"
+            messagesView.reloadData()
         } else {
             channelNameLbl.text = "Smack"
         }
@@ -69,7 +95,24 @@ class ChatVC: UIViewController {
         guard let channelId = MessageService.instance.selectedChannel?._id else { return }
         
         MessageService.instance.findAllMessagesForChannel(channelId: channelId) { (success) in
+            self.messagesView.reloadData()
             
+            if MessageService.instance.messages.count > 0 {
+                let indexLastMessage = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
+                self.messagesView.scrollToRow(at: indexLastMessage, at: .bottom, animated: false)
+            }
+        }
+    }
+    
+    @IBAction func messageBoxEditing(_ sender: Any) {
+        if messageTxtBox.text == "" {
+            isTyping = false
+            sendMsgBtn.isHidden = true
+        } else {
+            if isTyping == false {
+                sendMsgBtn.isHidden = false
+            }
+            isTyping = true
         }
     }
     
@@ -83,6 +126,25 @@ class ChatVC: UIViewController {
                 self.messageTxtBox.resignFirstResponder()
             }
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell {
+            let message = MessageService.instance.messages[indexPath.row]
+            cell.setupView(message: message)
+            
+            return cell
+        }
+        
+        return MessageCell()
     }
     
 }

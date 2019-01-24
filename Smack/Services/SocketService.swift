@@ -14,13 +14,14 @@ class SocketService: NSObject {
     
     override init() {
         super.init()
+        
+        socket = manager.defaultSocket
     }
     
     let manager = SocketManager(socketURL: URL(string: BASE_URL)!)
     var socket: SocketIOClient!
     
     func establishConnection() {
-        socket = manager.defaultSocket
         socket.connect()
     }
     
@@ -52,6 +53,28 @@ class SocketService: NSObject {
         
         socket.emit("newMessage", messageBody, user.id, channelId, user.name, user.avatarName, user.avatarColor)
         completion(true)
+    }
+    
+    func messageDidAdd(completion: @escaping CompletionHandler) {
+        socket.on("messageCreated") { (dataArray, ack) in
+            guard let channelId = dataArray[2] as? String else { return }
+            if channelId != MessageService.instance.selectedChannel?._id || !AuthService.instance.isLoggedIn {
+                return
+            }
+            
+            guard let messageBody = dataArray[0] as? String else { return }
+            guard let userName = dataArray[3] as? String else { return }
+            guard let userAvatar = dataArray[4] as? String else { return }
+            guard let userAvatarColor = dataArray[5] as? String else { return }
+            guard let id = dataArray[6] as? String else { return }
+            guard let timeStamp = dataArray[7] as? String else { return }
+            
+            let message = Message(message: messageBody, userName: userName, channelId: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
+            
+            MessageService.instance.messages.append(message)
+            
+            completion(true)
+        }
     }
     
 }
